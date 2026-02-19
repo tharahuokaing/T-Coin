@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>T-Coin Security Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <h1 class="title">T-Coin Security Dashboard</h1>
+    <div class="container">
+
+        <section class="security-module">
+            <h2>Two-Man Integrity Activation</h2>
+            <p class="description">Critical T-Coin operations require synchronized approval from dual officers.</p>
+            
+            <label for="action-select">Target Critical Action</label>
+            <select id="action-select">
+                <option value="withdraw">Withdraw Large Amount</option>
+                <option value="transfer">High-Value Transfer</option>
+                <option value="alter_settings">Change System Settings</option>
+                <option value="manual_override">Manual Ledger Override</option>
+            </select>
+
+            <div class="officer-auth-grid">
+                <div class="input-group">
+                    <label>Officer 1 ID</label>
+                    <input type="text" id="officer1" placeholder="e.g. dutyfree">
+                    <input type="password" id="officer1_pw" placeholder="Password">
+                </div>
+                <div class="input-group">
+                    <label>Officer 2 ID</label>
+                    <input type="text" id="officer2" placeholder="e.g. dutyfree1">
+                    <input type="password" id="officer2_pw" placeholder="Password">
+                </div>
+            </div>
+            
+            <button id="createApprovalRequest" class="btn-primary">Initialize Security Protocol</button>
+        </section>
+
+        <section class="log-module">
+            <h2>Live Approval Queue</h2>
+            <div id="pendingRequests" class="log-list"></div>
+        </section>
+
+        <section class="log-module">
+            <h2>Immutable Audit Trail</h2>
+            <div id="actionLog" class="log-list"></div>
+        </section>
+
+        <section class="dms-module">
+            <h2>Dead Man's Switch (30-Day Cycle)</h2>
+            <p><strong>System Status:</strong> <span id="dmsStatus">Analyzing...</span></p>
+            <div class="dms-controls">
+                <input type="text" id="dmsOfficer" placeholder="Officer ID">
+                <button id="confirmPresenceBtn" class="btn-secondary">Confirm Presence</button>
+            </div>
+            <div id="dmsMessage" class="dms-warning" style="display:none;"></div>
+        </section>
+
+    </div>
+
+    <script src="server.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
