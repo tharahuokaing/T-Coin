@@ -1,0 +1,605 @@
+/* styles.css - Hologram style with LED running light animation */
+
+/* Body with hologram grid and running LED effect */
+body {
+  padding: 25px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #0f0f2f;
+  color: #e0e0f0;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: #0a0a2f;
+  background-image:
+    radial-gradient(circle at 50% 50%, #0088ff22 1px, transparent 2px),
+    linear-gradient(45deg, #00cfff33 25%, transparent 25%, transparent 75%, #00cfff33 75%, #00cfff33),
+    linear-gradient(-45deg, #00cfff33 25%, transparent 25%, transparent 75%, #00cfff33 75%, #00cfff33),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 10px,
+      #00eaff88 11px,
+      #00eaff88 15px,
+      transparent 16px
+    );
+  background-size: 40px 40px, 40px 40px, 40px 40px, 200% 100%;
+  animation: hologramGlow 15s linear infinite, ledRun 4s linear infinite;
+}
+
+@keyframes hologramGlow {
+  0%, 100% {
+    background-position: 0 0, 100% 100%, 0 0, 0 0;
+  }
+  50% {
+    background-position: 100% 0, 0 100%, 100% 0, 100% 0;
+  }
+}
+
+@keyframes ledRun {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Title with hologram glow text effect and subtle animation */
+
+.title {
+  color: #7affff;
+  font-weight: 900;
+  font-size: 2.5em;
+  text-align: center;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow:
+    0 0 10px #00fff7,
+    0 0 20px #00e3ff,
+    0 0 30px #00a9ff,
+    0 0 40px #007eff,
+    0 0 70px #0055ff,
+    0 0 80px #007fff,
+    0 0 100px #00aaff,
+    0 0 150px #00dfff;
+  animation: flicker 3s infinite ease-in-out alternate;
+}
+
+@keyframes flicker {
+  0%, 100% { text-shadow:
+    0 0 10px #00fff7,
+    0 0 22px #00e3ff,
+    0 0 35px #00a9ff,
+    0 0 45px #007eff,
+    0 0 80px #0055ff,
+    0 0 90px #007fff,
+    0 0 110px #00aaff,
+    0 0 160px #00dfff;}
+  50% { text-shadow:
+    0 0 8px #00bfcf,
+    0 0 18px #00a1cf,
+    0 0 28px #00749f,
+    0 0 38px #00486f,
+    0 0 60px #003153,
+    0 0 70px #00477f,
+    0 0 90px #0084af,
+    0 0 120px #00a8ff;}
+}
+
+/* Section containers with hologram effect on hover */
+section {
+  background: rgba(10, 20, 40, 0.85);
+  border-radius: 15px;
+  box-shadow:
+    0 0 20px #00bfff99,
+    inset 0 0 15px #00d0ffcc;
+  padding: 25px 35px;
+  margin-bottom: 30px;
+  width: 350px;
+  max-width: 95vw;
+  color: #a0d8ff;
+  transition: box-shadow 0.3s ease;
+}
+
+section:hover {
+  box-shadow:
+    0 0 45px #00eaffee,
+    inset 0 0 40px #00f0ffdd;
+}
+
+/* Section headings with holographic glow*/
+section h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  letter-spacing: 1.2px;
+  color: #66d9ff;
+  text-shadow:
+    0 0 8px #24ffffcc,
+    0 0 20px #00cfffaa;
+  font-weight: 700;
+}
+
+/* Inputs and selects with subtle inner glow */
+input[type="number"],
+input[type="text"],
+select {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 14px;
+  border: none;
+  border-radius: 10px;
+  background: #001022;
+  color: #cceeff;
+  font-size: 1.05em;
+  box-shadow:
+    0 0 10px #00bfffaa inset;
+  transition: box-shadow 0.3s ease, color 0.3s ease;
+}
+
+input[type="number"]:focus,
+input[type="text"]:focus,
+select:focus {
+  outline: none;
+  box-shadow:
+    0 0 22px #00e4ff,
+    0 0 25px #00e4ff inset;
+  color: #e0ffff;
+}
+
+/* Buttons with LED glowing pulse effect */
+button {
+  width: 100%;
+  background: linear-gradient(135deg, #00d4ff, #006eff);
+  border: none;
+  border-radius: 14px;
+  padding: 16px 0;
+  font-size: 1.15em;
+  font-weight: 800;
+  color: #ffffffee;
+  cursor: pointer;
+  letter-spacing: 1.4px;
+  box-shadow:
+    0 0 15px #00d4ff,
+    0 0 30px #006eff;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+  animation: pulseLed 2.5s infinite alternate;
+}
+
+button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #0099ff, #003f99);
+  box-shadow:
+    0 0 40px #00bbff,
+    0 0 60px #0055cc;
+  color: #d0f8ff;
+  animation: none;
+}
+
+@keyframes pulseLed {
+  0% {
+    box-shadow:
+      0 0 10px #00d4ff,
+      0 0 30px #006eff;
+  }
+  50% {
+    box-shadow:
+      0 0 25px #00efff,
+      0 0 50px #0088ff;
+  }
+  100% {
+    box-shadow:
+      0 0 15px #00b2ff,
+      0 0 35px #005fbb;
+  }
+}
+
+/* Disabled buttons */
+button:disabled {
+  background: #113355;
+  box-shadow: none;
+  cursor: not-allowed;
+  color: #7799aa;
+}
+
+/* Paragraphs and labels glowing faintly */
+p, label {
+  font-size: 1em;
+  line-height: 1.45;
+  color: #9ccfffdd;
+  user-select: none;
+  text-shadow:
+    0 0 3px #00cfffaa;
+}
+
+/* Balance value with bright hologram glow */
+#balance {
+  font-weight: 900;
+  font-size: 1.5em;
+  color: #98ffffdd;
+  text-shadow:
+    0 0 18px #00e4ff,
+    0 0 35px #00aaff;
+}
+
+/* Containers with hologram glow */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: rgba(5, 10, 25, 0.9);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow:
+    0 0 30px #00b7ffaa;
+  position: relative;
+  overflow: hidden;
+}
+
+/* LED bar running along container top */
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 150%;
+  height: 5px;
+  background: linear-gradient(
+    270deg,
+    transparent 0%,
+    #00e5ff 40%,
+    #00aaff 50%,
+    #00e5ff 60%,
+    transparent 100%
+  );
+  animation: ledBarMove 3s linear infinite;
+  border-radius: 3px 3px 0 0;
+  pointer-events: none;
+}
+
+@keyframes ledBarMove {
+  from { left: -50%; }
+  to { left: 100%; }
+}
+
+/* Logs and scrollbars */
+
+.log-list {
+  background: #00172dcc;
+  padding: 20px;
+  border-radius: 14px;
+  max-height: 260px;
+  overflow-y: auto;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.9em;
+  color: #88d3ffee;
+  box-shadow:
+    inset 0 0 25px #0088ffcc;
+  user-select: text;
+  text-shadow: 0 0 3px #00aaff88;
+}
+
+.log-entry {
+  margin-bottom: 10px;
+  border-bottom: 1px solid #00446644;
+  padding-bottom: 8px;
+}
+
+.log-entry:last-child {
+  border-bottom: none;
+}
+
+.status-green {
+  color: #00ff85;
+  font-weight: 900;
+  text-shadow:
+    0 0 6px #00ff85cc,
+    0 0 12px #00ff8566;
+}
+
+.status-red {
+  color: #ff3f3f;
+  font-weight: 900;
+  text-shadow:
+    0 0 6px #ff3f3fcc,
+    0 0 12px #ff3f3f66;
+}
+
+.dms-warning {
+  background: #440000cc;
+  color: #ff7777;
+  padding: 18px;
+  border-radius: 14px;
+  margin-bottom: 25px;
+  text-align: center;
+  font-weight: 800;
+  box-shadow:
+    0 0 20px #ff4444dd,
+    inset 0 0 25px #ff5555bb;
+}
+
+/* Scrollbar styling */
+.log-list::-webkit-scrollbar {
+  width: 10px;
+}
+
+.log-list::-webkit-scrollbar-track {
+  background: #002040cc;
+  border-radius: 10px;
+}
+
+.log-list::-webkit-scrollbar-thumb {
+  background: #00afffcc;
+  border-radius: 10px;
+  box-shadow: inset 0 0 4px #0080ddcc;
+}
+
+/* Responsive adjustments */
+@media (max-width: 400px) {
+  section {
+    width: 95vw;
+    padding: 20px;
+  }
+}
+
+/* T-Coin Security Terminal - Global Styling */
+:root {
+    --bg-dark: #0a0b0d;
+    --panel-bg: #14171c;
+    --neon-green: #00ff9d;
+    --emergency-red: #ff3e3e;
+    --text-dim: #94a3b8;
+    --hologram-speed: 4s;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: #e2e8f0;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    color: var(--neon-green);
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    text-shadow: 0 0 15px var(--neon-green);
+    margin-bottom: 30px;
+}
+
+.container {
+    width: 100%;
+    max-width: 900px;
+    display: grid;
+    gap: 20px;
+}
+
+/* --- THE HOLOGRAM LED BOX (Two-Man Integrity) --- */
+section.security-module {
+    position: relative;
+    background: var(--panel-bg);
+    padding: 30px;
+    border-radius: 8px;
+    overflow: hidden; /* Clips the LED animation */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* The 7-Color LED Border Animation */
+section.security-module::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+        #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8f00ff, #ff0000
+    );
+    animation: rotateHologram var(--hologram-speed) linear infinite;
+    z-index: 0;
+}
+
+/* Inner Overlay to create the "border" effect */
+section.security-module::after {
+    content: '';
+    position: absolute;
+    inset: 4px; /* Thickness of the LED border */
+    background: var(--panel-bg);
+    border-radius: 4px;
+    z-index: 1;
+}
+
+/* Ensure content stays above the animation */
+section.security-module * {
+    position: relative;
+    z-index: 2;
+}
+
+@keyframes rotateHologram {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* --- INPUTS & UI ELEMENTS --- */
+h2 {
+    color: var(--neon-green);
+    border-bottom: 1px solid #334155;
+    padding-bottom: 10px;
+}
+
+.officer-auth-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+input, select {
+    background: #0f172a;
+    border: 1px solid #334155;
+    color: var(--neon-green);
+    padding: 12px;
+    border-radius: 4px;
+    width: 100%;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--neon-green);
+    box-shadow: 0 0 10px rgba(0, 255, 157, 0.2);
+}
+
+.btn-primary {
+    background: transparent;
+    border: 1px solid var(--neon-green);
+    color: var(--neon-green);
+    padding: 15px;
+    width: 100%;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    background: var(--neon-green);
+    color: black;
+    box-shadow: 0 0 20px var(--neon-green);
+}
+
+/* --- LOGS & AUDIT TRAIL --- */
+.log-list {
+    background: #0f172a;
+    border-left: 3px solid var(--neon-green);
+    padding: 15px;
+    max-height: 200px;
+    overflow-y: auto;
+    font-size: 0.85rem;
+}
+
+.log-entry {
+    padding: 8px;
+    border-bottom: 1px solid #1e293b;
+    animation: fadeIn 0.5s ease;
+}
+
+.status-tag {
+    color: var(--neon-green);
+    font-weight: bold;
+}
+
+/* --- DEAD MAN'S SWITCH STATUS --- */
+#dmsStatus {
+    font-weight: bold;
+    text-shadow: 0 0 5px currentColor;
+}
+
+.dms-warning {
+    background: rgba(255, 62, 62, 0.1);
+    color: var(--emergency-red);
+    padding: 10px;
+    border: 1px solid var(--emergency-red);
+    margin-top: 10px;
+    text-align: center;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- UNIVERSAL SECTION RESET --- */
+section {
+    position: relative;
+    background: var(--panel-bg);
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    overflow: hidden; /* Vital for the LED edge effect */
+    border: 1px solid #1e293b;
+    z-index: 1;
+}
+
+/* --- THE 7-COLOR HOLOGRAM LED BORDER --- */
+/* This targets both the Security Box and the Dead Man's Switch Box */
+section.security-module::before,
+section:last-of-type::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    /* 7-Color LED Array: Red, Orange, Yellow, Green, Cyan, Blue, Violet */
+    background: conic-gradient(
+        #ff0000, 
+        #ff8c00, 
+        #ffff00, 
+        #00ff00, 
+        #00ffff, 
+        #0000ff, 
+        #8b00ff, 
+        #ff0000
+    );
+    animation: rotateHologram 4s linear infinite;
+    z-index: -2;
+}
+
+/* Inner Mask to create the "Wire" LED look */
+section.security-module::after,
+section:last-of-type::after {
+    content: '';
+    position: absolute;
+    inset: 3px; /* The thickness of the LED line */
+    background: var(--bg-dark); /* Matches your main background */
+    border-radius: 10px;
+    z-index: -1;
+}
+
+/* --- SPECIFIC STYLING FOR DEAD MAN'S SWITCH --- */
+section:last-of-type {
+    box-shadow: 0 0 20px rgba(0, 255, 157, 0.1);
+}
+
+/* Holographic Scanning Line Effect */
+section:last-of-type::before {
+    animation: rotateHologram 6s linear infinite reverse; /* Slower, reverse spin for DMS */
+}
+
+/* Status Text Glow */
+#dmsStatus {
+    font-family: 'Orbitron', 'Courier New', monospace;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px currentColor;
+}
+
+/* --- ANIMATIONS --- */
+@keyframes rotateHologram {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Subtle Pulse for the DMS Box */
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 15px rgba(0, 255, 157, 0.1); }
+    50% { box-shadow: 0 0 30px rgba(0, 255, 157, 0.3); }
+    100% { box-shadow: 0 0 15px rgba(0, 255, 157, 0.1); }
+}
+
+section:last-of-type {
+    animation: pulseGlow 3s ease-in-out infinite;
+}
+
+/* Ensuring all text stays readable over the background mask */
+section h2, section p, section label, section div {
+    position: relative;
+    z-index: 5;
+}
